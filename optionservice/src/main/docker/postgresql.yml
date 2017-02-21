@@ -1,0 +1,12 @@
+version: '2'
+services:
+    optionservice-postgresql:
+        container_name: optionservice-postgresql
+        image: postgres:9.5.4
+        # volumes:
+        #     - ~/volumes/jhipster/optionservice/postgresql/:/var/lib/postgresql/
+        environment:
+            - POSTGRES_USER=optionservice
+            - POSTGRES_PASSWORD=
+        ports:
+            - 5432:5432

@@ -1,0 +1,21 @@
+{
+    "fluentMethods": true,
+    "relationships": [],
+    "fields": [
+        {
+            "fieldName": "source",
+            "fieldType": "String"
+        },
+        {
+            "fieldName": "value",
+            "fieldType": "String"
+        }
+    ],
+    "changelogDate": "20170124083105",
+    "dto": "no",
+    "service": "no",
+    "entityTableName": "vote",
+    "pagination": "no",
+    "microserviceName": "voteservice",
+    "searchEngine": false
+}

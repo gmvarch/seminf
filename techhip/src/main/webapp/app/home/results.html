@@ -1,0 +1,44 @@
+<html>
+  <head>
+    <script type="text/javascript">
+    
+    // Load the Visualization API and the piechart package.
+    google.charts.load('current', {'packages':['corechart']});
+      
+    // Set a callback to run when the Google Visualization API is loaded.
+    google.charts.setOnLoadCallback(drawChart);
+      
+    function drawChart() {
+      var jsonData = $.ajax({
+          url: "/voteservice/api/votesagg",
+          dataType: "json",
+          async: false
+          }).responseText;
+      
+      var array  = JSON.parse(jsonData);
+      console.log(array);
+		
+      var paintarray = new Array();
+      paintarray.push(['Option','Votos']);
+      for (var i=0, item; item = array[i]; i++) {
+    	  console.log("Looping: index ", i, "item" + item);
+    	  paintarray.push([item.option, parseInt(item.value)]);
+      }
+      var datapaint = google.visualization.arrayToDataTable(paintarray);
+      var options = {
+              title: 'Encuesta'
+            };
+      // Create our data table out of JSON data loaded from server.
+	  var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
+	  chart.draw(datapaint, options);
+      
+    }
+
+    </script>
+  </head>
+
+  <body>
+    <!--Div that will hold the pie chart-->
+    <div id="chart_div"></div>
+  </body>
+</html>
