@@ -32,8 +32,8 @@ spring:
         type: com.zaxxer.hikari.HikariDataSource
         url: jdbc:postgresql://localhost:5432/optionservice
         name:
-        username: postgres
-        password: postgres
+        username: optionservice
+        password: optionservice
     jpa:
         database-platform: com.gmv.techhip.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL

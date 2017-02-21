@@ -35,7 +35,7 @@ spring:
         url: jdbc:postgresql://localhost:5432/techhip
         name:
         username: techhip
-        password:
+        password: techhip
     jpa:
         database-platform: com.gmv.techhip.domain.util.FixedPostgreSQL82Dialect
         database: POSTGRESQL
