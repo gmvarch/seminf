@@ -89,26 +89,6 @@ public class VoteResourceIntTest {
 
     @Test
     @Transactional
-    public void createVote() throws Exception {
-        int databaseSizeBeforeCreate = voteRepository.findAll().size();
-
-        // Create the Vote
-
-        restVoteMockMvc.perform(post("/api/votes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(vote)))
-            .andExpect(status().isCreated());
-
-        // Validate the Vote in the database
-        List<Vote> voteList = voteRepository.findAll();
-        assertThat(voteList).hasSize(databaseSizeBeforeCreate + 1);
-        Vote testVote = voteList.get(voteList.size() - 1);
-        assertThat(testVote.getSource()).isEqualTo(DEFAULT_SOURCE);
-        assertThat(testVote.getValue()).isEqualTo(DEFAULT_VALUE);
-    }
-
-    @Test
-    @Transactional
     public void createVoteWithExistingId() throws Exception {
         int databaseSizeBeforeCreate = voteRepository.findAll().size();
 
@@ -191,23 +171,6 @@ public class VoteResourceIntTest {
         assertThat(testVote.getValue()).isEqualTo(UPDATED_VALUE);
     }
 
-    @Test
-    @Transactional
-    public void updateNonExistingVote() throws Exception {
-        int databaseSizeBeforeUpdate = voteRepository.findAll().size();
-
-        // Create the Vote
-
-        // If the entity doesn't have an ID, it will be created instead of just being updated
-        restVoteMockMvc.perform(put("/api/votes")
-            .contentType(TestUtil.APPLICATION_JSON_UTF8)
-            .content(TestUtil.convertObjectToJsonBytes(vote)))
-            .andExpect(status().isCreated());
-
-        // Validate the Vote in the database
-        List<Vote> voteList = voteRepository.findAll();
-        assertThat(voteList).hasSize(databaseSizeBeforeUpdate + 1);
-    }
 
     @Test
     @Transactional
