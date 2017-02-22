@@ -3,7 +3,6 @@ services:
     optionservice-app:
         image: optionservice
         external_links:
-            - optionservice-postgresql:postgresql
             - jhipster-registry:registry
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
@@ -11,17 +10,10 @@ services:
             - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/optionservice
             - JHIPSTER_SLEEP=10
             - JHIPSTER_REGISTRY_PASSWORD=admin
-    optionservice-postgresql:
-        container_name: optionservice-postgresql
-        image: postgres:9.5.4
-        environment:
-            - POSTGRES_USER=optionservice
-            - POSTGRES_PASSWORD=
     
     techhip-app:
         image: techhip
         external_links:
-            - techhip-postgresql:postgresql
             - jhipster-registry:registry
             - optionservice:optionservice
         environment:
@@ -33,17 +25,10 @@ services:
             - JHIPSTER_REGISTRY_PASSWORD=admin
         ports:
             - 8080:8080
-    techhip-postgresql:
-        container_name: techhip-postgresql
-        image: postgres:9.5.4
-        environment:
-            - POSTGRES_USER=techhip
-            - POSTGRES_PASSWORD=
     
     voteservice-app:
         image: voteservice
         external_links:
-            - voteservice-postgresql:postgresql
             - jhipster-registry:registry
         environment:
             - SPRING_PROFILES_ACTIVE=prod,swagger
@@ -51,16 +36,8 @@ services:
             - SPRING_DATASOURCE_URL=jdbc:postgresql://postgresql:5432/voteservice
             - JHIPSTER_SLEEP=10
             - JHIPSTER_REGISTRY_PASSWORD=admin
-    voteservice-postgresql:
-        container_name: voteservice-postgresql
-        image: postgres:9.5.4
-        environment:
-            - POSTGRES_USER=voteservice
-            - POSTGRES_PASSWORD=
     
     jhipster-registry:
         extends:
             file: jhipster-registry.yml
             service: jhipster-registry
-
-
