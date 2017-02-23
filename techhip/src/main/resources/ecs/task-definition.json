@@ -1,0 +1,64 @@
+{
+  "containerDefinitions": [
+    {
+      "memory": 1024,
+      "portMappings": [
+        {
+          "hostPort": 0,
+          "containerPort": 8080,
+          "protocol": "tcp"
+        }
+      ],
+      "essential": true,
+      "name": "techhip-container",
+      "environment": [
+        {
+          "name": "EUREKA_CLIENT_SERVICEURL_DEFAULTZONE",
+          "value": "http://admin:admin@seminf-lb-1075097369.eu-west-1.elb.amazonaws.com:8761/eureka/"
+        },
+        {
+          "name": "EUREKA_INSTANCE_IP-ADDRESS",
+          "value": "seminf-lb-1075097369.eu-west-1.elb.amazonaws.com"
+        },
+        {
+          "name": "JHIPSTER_REGISTRY_PASSWORD",
+          "value": "admin"
+        },
+        {
+          "name": "JHIPSTER_SLEEP",
+          "value": "10"
+        },
+        {
+          "name": "POSTGRES_PASSWORD",
+          "value": "techhip"
+        },
+        {
+          "name": "POSTGRES_USER",
+          "value": "techhip"
+        },
+        {
+          "name": "SPRING_CLOUD_CONFIG_URI",
+          "value": "http://admin:admin@seminf-lb-1075097369.eu-west-1.elb.amazonaws.com:8761/config/"
+        },
+        {
+          "name": "SPRING_DATASOURCE_URL",
+          "value": "jdbc:postgresql://seminf.c0zxnsveze9u.eu-west-1.rds.amazonaws.com:5432/techhip"
+        },
+        {
+          "name": "SPRING_PROFILES_ACTIVE",
+          "value": "prod,swagger"
+        }
+      ],
+      "image": "569876332363.dkr.ecr.eu-west-1.amazonaws.com/seminf-docker-repo:techhip-snapshot",
+      "logConfiguration": {
+        "logDriver": "awslogs",
+        "options": {
+          "awslogs-group": "techhip",
+          "awslogs-region": "eu-west-1"
+        }
+      },
+      "cpu": 50
+    }
+  ],
+  "family": "techhip-task"
+}
