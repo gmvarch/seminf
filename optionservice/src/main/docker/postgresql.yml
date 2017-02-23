@@ -7,6 +7,6 @@ services:
         #     - ~/volumes/jhipster/optionservice/postgresql/:/var/lib/postgresql/
         environment:
             - POSTGRES_USER=optionservice
-            - POSTGRES_PASSWORD=
+            - POSTGRES_PASSWORD=optionservice
         ports:
             - 5432:5432

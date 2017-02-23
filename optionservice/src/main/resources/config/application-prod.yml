@@ -13,6 +13,8 @@
 eureka:
     instance:
         prefer-ip-address: true
+        ip-address: ${server.address}
+        hostname: ${server.address}
     client:
         enabled: true
         healthcheck:
